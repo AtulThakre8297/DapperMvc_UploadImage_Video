@@ -1,0 +1,29 @@
+﻿
+@model DapperMvc_Upload_Image.Models.ViewModel.VideoVM
+
+@{
+    ViewData["Title"] = "Upload Videos";
+}
+
+<h1>Upload Videos</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <form method="post" asp-action="AddVideo" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label asp-for="Name"></label>
+                    <input type="text" asp-for="Name" class="form-control" placeholder="Enter Video Name" />
+                    <span class="text-danger" asp-validation-for="Name"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="VideoPath"></label>
+                    <input type="file" asp-for="VideoPath" class="form-control-file" placeholder="Select Video File" accept="video/*" />
+                </div>
+                <div class="form-group">
+                    <input type="submit" class="btn btn-primary float-right" value="Save" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

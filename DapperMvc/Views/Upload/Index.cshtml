@@ -1,0 +1,69 @@
+﻿@*@model IEnumerable<DapperMvc_Upload_Image.Models.Image>
+@{
+    ViewData["Title"] = "index";
+
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset3">
+            <table class="table table-bordered">
+                <thread>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thread>
+                @foreach(var d in Model)
+                {
+                    <tr class="text-center">
+                        <td>@d.Id</td>
+                    <td>@d.Name</td>
+                    <td>img src="@d.ImagePath" height="100px"; width=""</td>
+                    <td>
+                        <a class="btn btsm btn-danger" asp-action="Delete" asp-controller="Upload" asp-route-id="@d.Id">Delete</a>
+                            <a class="btn btsm btn-info" asp-action="Update" asp-controller="Upload" asp-route-id="@d.Id">Update</a>
+                    </td>
+
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>*@
+
+@model IEnumerable<DapperMvc_Upload_Image.Models.Image>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-6 offset-3">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Image</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @foreach (var d in Model)
+                {
+                    <tr class="text-center">
+                        <td>@d.Id</td>
+                        <td>@d.Name</td>
+                        <td><img src="@d.ImagePath" height="100px" width="auto" /></td>
+                        <td>
+                            <a class="btn btn-sm btn-danger" asp-action="Delete" asp-controller="Upload" asp-route-id="@d.Id">Delete</a>
+                            <a class="btn btn-sm btn-info" asp-action="Update" asp-controller="Upload" asp-route-id="@d.Id">Update</a>
+                        </td>
+                    </tr>
+                }
+            </table>
+        </div>
+    </div>
+</div>

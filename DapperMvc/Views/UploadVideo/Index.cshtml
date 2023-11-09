@@ -1,0 +1,86 @@
+﻿@*@model IEnumerable<DapperMvc_Upload_Image.Models.Video>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+*@
+
+@model IEnumerable<DapperMvc_Upload_Image.Models.Video>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Video Gallery</h1>
+
+<div class="container">
+    <div class="row">
+        <div class="col-12">
+            <table class="table table-bordered">
+                <thead>
+                    <tr class="text-center">
+                        <th>Id</th>
+                        <th>Name</th>
+                        <th>Video</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                @foreach (var video in Model)
+                {
+                    <tr class="text-center">
+                        <td>@video.Id</td>
+                        <td>@video.Name</td>
+                        <td>
+                            <video width="320" height="240" controls>
+                                <source src="@video.VideoPath" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" asp-action="Delete" asp-controller="UploadVideo" asp-route-id="@video.Id">Delete</a>
+                            <a class="btn btn-info" asp-action="Update" asp-controller="UploadVideo" asp-route-id="@video.Id">Update</a>
+                        </td>
+                    </tr>
+                }
+
+
+                }
+            </table>
+        </div>
+    </div>
+</div>
